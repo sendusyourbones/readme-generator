@@ -95,6 +95,17 @@ function renderContribSection(contributing) {
   return contribSection;
 }
 
+// Function to render testing section
+function renderTestingSection(testing) {
+  let testingSection = '';
+
+  if (testing) {
+    testingSection = `## Testing\n${testing}`;
+  }
+
+  return testingSection;
+}
+
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   return `# ${data.title}
@@ -103,7 +114,8 @@ ${renderDescSection(data.description)}
 ${renderInstSection(data.installation)}
 ${renderUsageSection(data.usage)}
 ${renderLicenseSection(data.license)}
-${renderContribSection(data.contributing)}`
+${renderContribSection(data.contributing)}
+${renderTestingSection(data.testing)}`
 }
 
 module.exports = generateMarkdown;
