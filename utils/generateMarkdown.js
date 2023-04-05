@@ -84,6 +84,17 @@ function renderLicenseSection(license) {
   return licenseSection;
 }
 
+// Function to render contributing section
+function renderContribSection(contributing) {
+  let contribSection = '';
+
+  if (contributing) {
+    contribSection = `## Contributing\n${contributing}`;
+  }
+
+  return contribSection;
+}
+
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   return `# ${data.title}
@@ -91,7 +102,8 @@ ${renderLicenseBadge(data.license)}
 ${renderDescSection(data.description)}
 ${renderInstSection(data.installation)}
 ${renderUsageSection(data.usage)}
-${renderLicenseSection(data.license)}`
+${renderLicenseSection(data.license)}
+${renderContribSection(data.contributing)}`
 }
 
 module.exports = generateMarkdown;
