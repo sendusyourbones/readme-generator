@@ -5,6 +5,7 @@ const generateMarkdown = require('./utils/generateMarkdown.js');
 
 // Array of questions for user input
 const questions = [
+    'Enter your project title here:',
     'Enter your description here:',
     'Enter your installation instructions here:',
     'Enter your usage information here:',
@@ -26,54 +27,59 @@ function writeToFile(fileName, data) {
 function init() {
     inquirer.prompt([
         {
-            name: 'description',
+            name: 'title',
             message: questions[0],
             type: 'input'
         },
         {
-            name: 'installation',
+            name: 'description',
             message: questions[1],
             type: 'input'
         },
         {
-            name: 'usage',
+            name: 'installation',
             message: questions[2],
             type: 'input'
         },
         {
-            name: 'contribution',
+            name: 'usage',
             message: questions[3],
             type: 'input'
         },
         {
-            name: 'testing',
+            name: 'contributing',
             message: questions[4],
             type: 'input'
         },
         {
-            name: 'license',
+            name: 'testing',
             message: questions[5],
+            type: 'input'
+        },
+        {
+            name: 'license',
+            message: questions[6],
             type: 'rawlist',
             choices: [
-                'test1',
-                'test2',
-                'test3'
+                'Academic Free License v3.0',
+                'Educational Community License v2.0',
+                'ISC License',
+                'Microsoft Public License',
+                'MIT License',
+                'PostgreSQL License'
             ]
         },
         {
             name: 'username',
-            message: questions[6],
+            message: questions[7],
             type: 'input'
         },
         {
             name: 'email',
-            message: questions[7],
+            message: questions[8],
             type: 'input'
         }
-    ]).then(response => {
-        // TODO: Update with appropriate code to execute
-        console.log(response);
-    });
+    ]).then((response) => writeToFile('README.md', generateMarkdown(response)));
 }
 
 // Function call to initialize app
