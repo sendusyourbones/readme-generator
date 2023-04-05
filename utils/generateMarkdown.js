@@ -12,13 +12,7 @@ function renderLicenseBadge(license) {
 
 // Function that returns the description section
 function renderDescSection(description) {
-  let descSection = '';
-
-  if (description) {
-    descSection = `## Description\n${description}`;
-  }
-
-  return descSection;
+  return description ? `## Description\n${description}` : '';
 }
 
 // Function to render table of contents
@@ -51,24 +45,12 @@ function renderTable(data) {
 
 // Function to render installation section
 function renderInstSection(installation) {
-  let instSection = '';
-
-  if (installation) {
-    instSection = `## Installation\n${installation}`;
-  }
-
-  return instSection;
+  return installation ? `## Installation\n${installation}` : '';
 }
 
 // Function to render usage section
 function renderUsageSection(usage) {
-  let usageSection = '';
-
-  if (usage) {
-    usageSection = `## Usage\n${usage}`;
-  }
-
-  return usageSection;
+  return usage ? `## Usage\n${usage}` : '';
 }
 
 // Function that returns the license link
@@ -103,35 +85,17 @@ function renderLicenseLink(license) {
 
 // Function that returns the license section of README
 function renderLicenseSection(license) {
-  let licenseSection = '';
-
-  if (license) {
-    licenseSection = `## License\n${renderLicenseLink(license)}`;
-  }
-
-  return licenseSection;
+  return license ? `## License\n${renderLicenseLink(license)}` : '';
 }
 
 // Function to render contributing section
 function renderContribSection(contributing) {
-  let contribSection = '';
-
-  if (contributing) {
-    contribSection = `## Contributing\n${contributing}`;
-  }
-
-  return contribSection;
+  return contributing ? `## Contributing\n${contributing}` : '';
 }
 
 // Function to render testing section
 function renderTestingSection(testing) {
-  let testingSection = '';
-
-  if (testing) {
-    testingSection = `## Testing\n${testing}`;
-  }
-
-  return testingSection;
+  return testing ? `## Testing\n${testing}` : '';
 }
 
 // Function to render questions section
