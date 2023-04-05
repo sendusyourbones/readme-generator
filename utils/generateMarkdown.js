@@ -21,6 +21,34 @@ function renderDescSection(description) {
   return descSection;
 }
 
+// Function to render table of contents
+function renderTable(data) {
+  const headers = [
+    'Installation',
+    'Usage',
+    'Contributing',
+    'Testing',
+    'License',
+    'Questions'
+  ];
+
+  if (!data) {
+    return '';
+  }
+
+  let tableOfContents = '## Table of Contents\n';
+
+  for (let i = 0; i < headers.length; i++) {
+    const lowercaseHeader = headers[i].toLowerCase();
+    if (data[lowercaseHeader] || (headers[i] === 'Questions' && (data.username || data.email))) {
+      const entry = `* [${headers[i]}](#${lowercaseHeader})\n`;
+      tableOfContents += entry;
+    }
+  }
+
+  return tableOfContents;
+}
+
 // Function to render installation section
 function renderInstSection(installation) {
   let instSection = '';
@@ -123,16 +151,17 @@ function renderQuestionSection(username, email) {
   return questionSection;
 }
 
-// TODO: Create a function to generate markdown for README
+// Function to generate markdown for README
 function generateMarkdown(data) {
   return `# ${data.title}
 ${renderLicenseBadge(data.license)}
 ${renderDescSection(data.description)}
+${renderTable(data)}
 ${renderInstSection(data.installation)}
 ${renderUsageSection(data.usage)}
-${renderLicenseSection(data.license)}
 ${renderContribSection(data.contributing)}
 ${renderTestingSection(data.testing)}
+${renderLicenseSection(data.license)}
 ${renderQuestionSection(data.username, data.email)}`
 }
 
