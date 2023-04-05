@@ -10,6 +10,17 @@ function renderLicenseBadge(license) {
   return licenseBadge;
 }
 
+// Function that returns the description section
+function renderDescSection(description) {
+  let descSection = '';
+
+  if (description) {
+    descSection = `## Description\n${description}`;
+  }
+
+  return descSection;
+}
+
 // Function that returns the license link
 function renderLicenseLink(license) {
   let urlEnd = '';
@@ -55,6 +66,7 @@ function renderLicenseSection(license) {
 function generateMarkdown(data) {
   return `# ${data.title}
 ${renderLicenseBadge(data.license)}
+${renderDescSection(data.description)}
 ${renderLicenseSection(data.license)}`
 }
 
