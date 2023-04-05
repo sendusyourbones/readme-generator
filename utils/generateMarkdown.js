@@ -106,6 +106,23 @@ function renderTestingSection(testing) {
   return testingSection;
 }
 
+// Function to render questions section
+function renderQuestionSection(username, email) {
+  let questionSection = '';
+
+  if (username || email) {
+    questionSection = '## Questions\n';
+    if (username) {
+      questionSection += `- View my GitHub profile: [${username}](https://github.com/${username})\n`;
+    }
+    if (email) {
+      questionSection += `- Email me at [${email}](mailto:${email})`;
+    }
+  }
+
+  return questionSection;
+}
+
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   return `# ${data.title}
@@ -115,7 +132,8 @@ ${renderInstSection(data.installation)}
 ${renderUsageSection(data.usage)}
 ${renderLicenseSection(data.license)}
 ${renderContribSection(data.contributing)}
-${renderTestingSection(data.testing)}`
+${renderTestingSection(data.testing)}
+${renderQuestionSection(data.username, data.email)}`
 }
 
 module.exports = generateMarkdown;
