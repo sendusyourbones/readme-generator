@@ -21,6 +21,17 @@ function renderDescSection(description) {
   return descSection;
 }
 
+// Function to render installation section
+function renderInstSection(installation) {
+  let instSection = '';
+
+  if (installation) {
+    instSection = `## Installation\n${installation}`;
+  }
+
+  return instSection;
+}
+
 // Function that returns the license link
 function renderLicenseLink(license) {
   let urlEnd = '';
@@ -67,6 +78,7 @@ function generateMarkdown(data) {
   return `# ${data.title}
 ${renderLicenseBadge(data.license)}
 ${renderDescSection(data.description)}
+${renderInstSection(data.installation)}
 ${renderLicenseSection(data.license)}`
 }
 
