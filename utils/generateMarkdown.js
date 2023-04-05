@@ -32,6 +32,17 @@ function renderInstSection(installation) {
   return instSection;
 }
 
+// Function to render usage section
+function renderUsageSection(usage) {
+  let usageSection = '';
+
+  if (usage) {
+    usageSection = `## Usage\n${usage}`;
+  }
+
+  return usageSection;
+}
+
 // Function that returns the license link
 function renderLicenseLink(license) {
   let urlEnd = '';
@@ -79,6 +90,7 @@ function generateMarkdown(data) {
 ${renderLicenseBadge(data.license)}
 ${renderDescSection(data.description)}
 ${renderInstSection(data.installation)}
+${renderUsageSection(data.usage)}
 ${renderLicenseSection(data.license)}`
 }
 
