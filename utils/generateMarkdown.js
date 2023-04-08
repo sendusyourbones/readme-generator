@@ -63,16 +63,18 @@ function renderLicenseLink(license) {
 
 // Function to render questions section
 function renderQuestionSection(username, email) {
-  let questionSection = '';
+  if (!username && !email) {
+    return '';
+  }
 
-  if (username || email) {
-    questionSection = '## Questions\n';
-    if (username) {
-      questionSection += `- View my GitHub profile: [${username}](https://github.com/${username})\n`;
-    }
-    if (email) {
-      questionSection += `- Email me at [${email}](mailto:${email})`;
-    }
+  let questionSection = '## Questions\n';
+
+  if (username) {
+    questionSection += `- View my GitHub profile: [${username}](https://github.com/${username})\n`;
+  }
+  
+  if (email) {
+    questionSection += `- Email me at [${email}](mailto:${email})`;
   }
 
   return questionSection;
