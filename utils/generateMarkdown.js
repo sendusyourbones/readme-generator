@@ -1,13 +1,22 @@
+// Object to link license name with URL
+const licenseMappings = {
+  'Academic Free License v3.0': 'afl-3-0-php',
+  'Educational Community License v2.0': 'ecl-2-0',
+  'ISC License': 'isc-license-txt',
+  'Microsoft Public License': 'ms-pl-html',
+  'MIT License': 'mit',
+  'PostgreSQL License': 'postgresql'
+}
+
 // Function that returns a license badge based on which license is passed in
 function renderLicenseBadge(license) {
-  let licenseBadge = '';
-  
-  if (license) {
-    const licenseForUrl = license.replaceAll(' ', '%20');
-    licenseBadge = `![License badge](https://img.shields.io/badge/license-${licenseForUrl}-brightgreen)`;
+  if (!license) {
+    return '';
   }
 
-  return licenseBadge;
+  const licenseForUrl = license.replaceAll(' ', '%20');
+
+  return `![License badge](https://img.shields.io/badge/license-${licenseForUrl}-brightgreen)`;
 }
 
 // Function that returns sections with unmodified user input
@@ -33,10 +42,10 @@ function renderTable(data) {
   let tableOfContents = '## Table of Contents\n';
 
   for (let i = 0; i < headers.length; i++) {
-    const lowercaseHeader = headers[i].toLowerCase();
-    if (data[lowercaseHeader] || (headers[i] === 'Questions' && (data.username || data.email))) {
-      const entry = `* [${headers[i]}](#${lowercaseHeader})\n`;
-      tableOfContents += entry;
+    const currentHeader = headers[i];
+    const lowercaseHeader = currentHeader.toLowerCase();
+    if (data[lowercaseHeader] || (currentHeader === 'Questions' && (data.username || data.email))) {
+      tableOfContents += `* [${currentHeader}](#${lowercaseHeader})\n`;
     }
   }
 
@@ -45,32 +54,11 @@ function renderTable(data) {
 
 // Function that returns the license link
 function renderLicenseLink(license) {
-  let urlEnd = '';
-
-  switch (license) {
-    case 'Academic Free License v3.0':
-      urlEnd = 'afl-3-0-php';
-      break;
-    case 'Educational Community License v2.0':
-      urlEnd = 'ecl-2-0';
-      break;
-    case 'ISC License':
-      urlEnd = 'isc-license-txt';
-      break;
-    case 'Microsoft Public License':
-      urlEnd = 'ms-pl-html';
-      break;
-    case 'MIT License':
-      urlEnd = 'mit';
-      break;
-    case 'PostgreSQL License':
-      urlEnd = 'postgresql'
-      break;
-    default:
-      return '';
+  if (!license) {
+    return '';
   }
 
-  return `[${license}](https://opensource.org/license/${urlEnd}/)`
+  return `[${license}](https://opensource.org/license/${licenseMappings[license]}/)`;
 }
 
 // Function to render questions section
