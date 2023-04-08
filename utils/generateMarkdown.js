@@ -10,9 +10,9 @@ function renderLicenseBadge(license) {
   return licenseBadge;
 }
 
-// Function that returns the description section
-function renderDescSection(description) {
-  return description ? `## Description\n${description}` : '';
+// Function that returns sections with unmodified user input
+function renderText(title, text) {
+  return text ? `## ${title}\n${text}` : '';
 }
 
 // Function to render table of contents
@@ -41,16 +41,6 @@ function renderTable(data) {
   }
 
   return tableOfContents;
-}
-
-// Function to render installation section
-function renderInstSection(installation) {
-  return installation ? `## Installation\n${installation}` : '';
-}
-
-// Function to render usage section
-function renderUsageSection(usage) {
-  return usage ? `## Usage\n${usage}` : '';
 }
 
 // Function that returns the license link
@@ -83,21 +73,6 @@ function renderLicenseLink(license) {
   return `[${license}](https://opensource.org/license/${urlEnd}/)`
 }
 
-// Function that returns the license section of README
-function renderLicenseSection(license) {
-  return license ? `## License\n${renderLicenseLink(license)}` : '';
-}
-
-// Function to render contributing section
-function renderContribSection(contributing) {
-  return contributing ? `## Contributing\n${contributing}` : '';
-}
-
-// Function to render testing section
-function renderTestingSection(testing) {
-  return testing ? `## Testing\n${testing}` : '';
-}
-
 // Function to render questions section
 function renderQuestionSection(username, email) {
   let questionSection = '';
@@ -119,13 +94,13 @@ function renderQuestionSection(username, email) {
 function generateMarkdown(data) {
   return `# ${data.title}
 ${renderLicenseBadge(data.license)}
-${renderDescSection(data.description)}
+${renderText('Description', data.description)}
 ${renderTable(data)}
-${renderInstSection(data.installation)}
-${renderUsageSection(data.usage)}
-${renderContribSection(data.contributing)}
-${renderTestingSection(data.testing)}
-${renderLicenseSection(data.license)}
+${renderText('Installation', data.installation)}
+${renderText('Usage', data.usage)}
+${renderText('Contributing', data.contributing)}
+${renderText('Testing', data.testing)}
+${renderText('License', renderLicenseLink(data.license))}
 ${renderQuestionSection(data.username, data.email)}`
 }
 
