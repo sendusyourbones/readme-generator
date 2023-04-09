@@ -8,6 +8,7 @@ This application was built to help simplify and speed up the process of writing 
 * [License](#license)
 * [Questions](#questions)
 ## Usage
+Watch this [demo video](https://drive.google.com/file/d/1x7GPvMtkysSYx4jGq4FQwTw2d0is_2pH/view?usp=sharing) to see the application in action
 1. cd into the repository in the command line and enter ```node index```
 2. Respond to each prompt as it appears in the command line
 3. Once you respond to the final question, a ```README.MD``` file should appear in the directory you are in
