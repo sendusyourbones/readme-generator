@@ -30,7 +30,7 @@ function renderTable(data) {
     'Installation',
     'Usage',
     'Contributing',
-    'Testing',
+    'Tests',
     'License',
     'Questions'
   ];
@@ -72,7 +72,7 @@ function renderQuestionSection(username, email) {
   if (username) {
     questionSection += `- View my GitHub profile: [${username}](https://github.com/${username})\n`;
   }
-  
+
   if (email) {
     questionSection += `- Email me at [${email}](mailto:${email})`;
   }
@@ -89,7 +89,7 @@ ${renderTable(data)}
 ${renderText('Installation', data.installation)}
 ${renderText('Usage', data.usage)}
 ${renderText('Contributing', data.contributing)}
-${renderText('Testing', data.testing)}
+${renderText('Tests', data.tests)}
 ${renderText('License', renderLicenseLink(data.license))}
 ${renderQuestionSection(data.username, data.email)}`
 }

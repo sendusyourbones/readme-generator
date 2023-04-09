@@ -52,7 +52,7 @@ function init() {
             type: 'input'
         },
         {
-            name: 'testing',
+            name: 'tests',
             message: questions[5],
             type: 'input'
         },
